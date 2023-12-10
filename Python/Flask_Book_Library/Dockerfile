@@ -15,6 +15,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
+# Uruchomienie testów, w przypadku błędu (zwrócenia statusu różnego od 0), budowanie obrazu zatrzyma się.
+RUN python -m unittest -v project.tests.test_book_model
+
 # Expose the port the app runs on
 EXPOSE 5000
 
